@@ -1,0 +1,5 @@
+Williamson | c:2, java:2, javascript:3
+Faust | c:2, c++:2, assembly:2
+Smith | c++:3, java:3
+Stokes | java:3, javascript:2, python:2
+Sara | python:3, javascript:2
