@@ -6,14 +6,14 @@ import java.util.Objects;
 import java.util.Scanner;
 import java.util.Vector;
 
-public class ResourceAllocator {
+public class ExactMatch implements Strategy{
 
 
     private List<Applicant> resourceList;
     private List<Task> taskList;
 
 
-    public ResourceAllocator() throws IOException {
+    public ExactMatch() throws IOException {
 
         Utility util = new Utility();
         this.resourceList = util.fetchAppData();
@@ -42,7 +42,7 @@ public class ResourceAllocator {
 
         return -1;
     }
-    public void MatchingStrategy()
+    public void matchingStrategy()
     {
         int t = displayTask(); // Get Task index
 
@@ -63,7 +63,7 @@ public class ResourceAllocator {
 
             Vector<Boolean> tracker = new Vector<>(); // track the skill match
             Vector<Applicant> exactMatch = new Vector<>(); // Matched Resource
-            Vector<Applicant> skillMatch = new Vector<>(); // Matched Resource
+
 
 
             for(int i = 0,j = 0; j < resourceList.size();j++)
@@ -92,15 +92,6 @@ public class ResourceAllocator {
                         tracker.add(true); // Tracked
                         exactCheck++;
                     }
-                    else if(Objects.equals(reqSkill.getSkillName(), currSkill.getSkillName())) {
-
-                        if (i + 1 < reqList.size()) {
-                            reqSkill = reqList.get(++i); // Retrieving the Required Skill
-                            k = 0;
-                        }
-                        tracker.add(true); // Tracked
-
-                    }
                     else
                         k++;
 
@@ -109,12 +100,9 @@ public class ResourceAllocator {
                 if(tracker.size() == reqList.size() && exactCheck == reqList.size())
                 {
                      exactMatch.add(resourceNode); // Matched Successfully
-                     skillMatch.add(resourceNode);
+
                 }
-                else if(tracker.size() == reqList.size())
-                {
-                    skillMatch.add(resourceNode);
-                }
+
 
                 tracker.clear(); // tracker cleared
                 i = 0;
@@ -130,21 +118,11 @@ public class ResourceAllocator {
             }
 
 
-            System.out.println("\nSkill Only Matched Resource(s) for this Task => ");
-            for(Applicant a: skillMatch)
-            {
-                System.out.println(a.getName());
-            }
+
         }
         else
             System.out.println( "Error !");
 
     }
 
-
-    public static void main(String[] args) throws IOException {
-        ResourceAllocator matcher = new ResourceAllocator();
-
-        matcher.MatchingStrategy();
-    }
 }
