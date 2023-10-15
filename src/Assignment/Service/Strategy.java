@@ -1,4 +1,4 @@
-package Assignment;
+package Assignment.Service;
 
 public interface Strategy {
 
