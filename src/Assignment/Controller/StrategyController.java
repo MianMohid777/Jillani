@@ -40,11 +40,12 @@ public class StrategyController {
         return view;
     }
 
+
     public void setView(StrategyUI view) {
         this.view = view;
     }
 
-    public void addSkills(String id, String skillName, int exp)
+    public void addSkills(int id, String skillName, int exp)
     {
 
         if(resourceMap.containsKey(id)) {
@@ -78,5 +79,9 @@ public class StrategyController {
     }
 
 
+    public Applicant getResource(int id)
+    {
+        return resourceMap.get(id);
+    }
 
 }
