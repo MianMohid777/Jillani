@@ -150,26 +150,33 @@ public class ResourceForm {
                 if(resourceTable.getSelectedRow() >-1)
                 {
                     String skillName = (String) skills.getSelectedItem();
-                    int num = exp.getSelectedIndex()+1;
-                    int id = (int) resourceTable.getValueAt(resourceTable.getSelectedRow(),0);
 
-                    control.addSkills(id,skillName,num);
-
-                    Applicant app = control.getResource(id);
-
-                    List<Skill> list = app.getSkillSet();
-                    StringBuilder set = new StringBuilder();
-
-                    for(Skill s : list)
+                    if(skills.getSelectedItem().equals("-Select-"))
                     {
-                        set.append(s.getSkillName()).append("(").append(s.getExp()).append(") ");
-
+                        JOptionPane.showMessageDialog(formFrame,"Select a Valid Option");
                     }
+                    else {
 
-                    tableModel.setValueAt(set,resourceTable.getSelectedRow(),2);
+                        int num = exp.getSelectedIndex() + 1;
+                        int id = (int) resourceTable.getValueAt(resourceTable.getSelectedRow(), 0);
 
-                    JOptionPane.showMessageDialog(formFrame,skillName + " for " + id + " with exp " + num);
-                    JOptionPane.showMessageDialog(formFrame,set);
+                        control.addSkills(id, skillName, num);
+
+                        Applicant app = control.getResource(id);
+
+                        List<Skill> list = app.getSkillSet();
+                        StringBuilder set = new StringBuilder();
+
+                        for (Skill s : list) {
+                            set.append(s.getSkillName()).append("(").append(s.getExp()).append(") ");
+
+                        }
+
+                        tableModel.setValueAt(set, resourceTable.getSelectedRow(), 2);
+
+                        JOptionPane.showMessageDialog(formFrame, skillName + " for " + id + " with exp " + num);
+                        JOptionPane.showMessageDialog(formFrame, set);
+                    }
                 }
             }
         });
