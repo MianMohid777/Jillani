@@ -1,4 +1,4 @@
-package Assignment.Entity;
+package Assignment.Model.Entity;
 
 
 import java.util.LinkedList;

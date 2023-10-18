@@ -1,8 +1,8 @@
 package Assignment.View;
 
-import Assignment.Entity.Applicant;
+import Assignment.Model.Entity.Applicant;
 import Assignment.Controller.StrategyController;
-import Assignment.Entity.Skill;
+import Assignment.Model.Entity.Skill;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -31,12 +31,12 @@ public class ResourceForm {
 
     private StrategyController control;
 
-    public ResourceForm() {
+    public ResourceForm(StrategyController controller) {
 
-        control = new StrategyController();
+        control = controller;
 
         formFrame = new JFrame("Resource Form");
-        formFrame.setSize(600, 350);
+        formFrame.setSize(800, 450);
         formFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         fPanel = new JPanel(new FlowLayout());
@@ -57,18 +57,42 @@ public class ResourceForm {
 
         Vector<Object> k = new Vector<>();
         k.add(1);
-        k.add("Tester");
-        k.add("Java(1) JavaScript(2) SQL(3) ");
-
+        k.add("Root");
+        k.add("Java(4) JavaScript(2) Python(2) ");
         tableModel.addRow(k);
+        control.addResource("Root");
+        control.addSkills(1,"Java",4);
+        control.addSkills(1,"JavaScript",2);
+        control.addSkills(1,"Python",2);
 
-        control.addResource("Tester");
+        k = new Vector<>();
+        k.add(2);
+        k.add("Babar Azam");
+        k.add("Java(3) C++(3)");
+        tableModel.addRow(k);
+        control.addResource("Babar Azam");
+        control.addSkills(2,"Java",3);
+        control.addSkills(2,"C++",3);
+
+        k = new Vector<>();
+        k.add(3);
+        k.add("Smith");
+        k.add("Python(3) JavaScript(2)");
+        tableModel.addRow(k);
+        control.addResource("Smith");
+        control.addSkills(3,"Python",3);
+        control.addSkills(3,"JavaScript",2);
+
+
+
 
         String[] s = {
                 "-Select-",
                 "Java",
                 "Python",
                 "JavaScript",
+                "C",
+                "Assembly",
                 "C++",
                 "C#",
                 "Ruby",
@@ -189,7 +213,7 @@ public class ResourceForm {
 
 
         JScrollPane scrollPane = new JScrollPane(resourceTable);
-        scrollPane.setPreferredSize(new Dimension(350, 200));
+        scrollPane.setPreferredSize(new Dimension(500, 300));
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
 
@@ -213,11 +237,13 @@ public class ResourceForm {
         formFrame.setVisible(true);
     }
 
-
+    public JFrame getFormFrame() {
+        return formFrame;
+    }
 
     public static void main(String[]args)
     {
-        ResourceForm r = new ResourceForm();
+        ResourceForm r = new ResourceForm(new StrategyController());
     }
 
 }

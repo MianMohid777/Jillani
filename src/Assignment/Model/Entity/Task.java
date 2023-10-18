@@ -1,4 +1,4 @@
-package Assignment.Entity;
+package Assignment.Model.Entity;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -6,11 +6,13 @@ import java.util.List;
 
 public class Task {
 
+    private String id;
     private String taskName;
     private List<Skill> reqSkillSet;
 
 
     public Task() {
+        id = "";
         taskName = "";
         reqSkillSet  = new LinkedList<>();
     }
@@ -32,7 +34,11 @@ public class Task {
         this.reqSkillSet.add(sk);
     }
 
+    public String getId() {
+        return id;
+    }
 
-
-
+    public void setId(String id) {
+        this.id = id;
+    }
 }

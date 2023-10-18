@@ -1,5 +1,7 @@
 package Assignment.View;
 
+import Assignment.Controller.StrategyController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -12,9 +14,19 @@ public class StrategyUI {
     private JPanel optionPanel;
 
     private ResourceForm rf;
+    private TaskForm tf;
 
-    public StrategyUI()
+    private Matching mf;
+
+    boolean isFormOpen1 = false;
+    boolean isFormOpen2 = false;
+    boolean isFormOpen3 = false;
+
+    public StrategyUI(StrategyController controller)
     {
+
+
+
         frame = new JFrame("Resource Allocator");
         frame.setSize(300,300);
         optionPanel = new JPanel();
@@ -36,20 +48,56 @@ public class StrategyUI {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                frame.setVisible(false);
-                rf = new ResourceForm();
+                if(!isFormOpen1)
+                {rf = new ResourceForm(controller);
+                    isFormOpen1 = true;}
             }
         });
-        optionPanel.add(addR,FlowLayout.LEFT);
-        optionPanel.add(addT,FlowLayout.CENTER);
-        optionPanel.add(match,FlowLayout.RIGHT);
 
+        t.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(!isFormOpen2) {
+                    tf = new TaskForm(controller);
+                    isFormOpen2 = true;
+                }
+            }
+        });
+
+        m.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                if(!isFormOpen1) {
+                    rf = new ResourceForm(controller);
+                    rf.getFormFrame().setVisible(false);
+                    isFormOpen1 = true;
+                }
+
+                if(!isFormOpen2) {
+                    tf = new TaskForm(controller);
+                    tf.getFormFrame().setVisible(false);
+                    isFormOpen2 = true;
+                }
+
+                if(!isFormOpen3)
+                { mf = new Matching(controller);
+                  isFormOpen3 = true;
+                }
+            }
+        });
+
+        optionPanel.add(addR,FlowLayout.LEFT);
         optionPanel.add(r);
+        optionPanel.add(addT,FlowLayout.CENTER);
         optionPanel.add(t);
+        optionPanel.add(match,FlowLayout.RIGHT);
         optionPanel.add(m);
 
         frame.setContentPane(optionPanel);
 
+        frame.setResizable(false);
         frame.setVisible(true);
 
 
@@ -81,7 +129,7 @@ public class StrategyUI {
 
     public static void main(String[] args)
     {
-        StrategyUI s  = new StrategyUI();
+        StrategyUI s  = new StrategyUI(new StrategyController());
     }
 
 

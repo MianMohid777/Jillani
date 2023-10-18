@@ -1,4 +1,4 @@
-package Assignment.Entity;
+package Assignment.Model.Entity;
 
 public class Skill {
 
