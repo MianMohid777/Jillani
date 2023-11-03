@@ -1,0 +1,7 @@
+This Input File for Practice.
+
+X
+Y
+   Z
+
+...End !
