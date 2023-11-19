@@ -27,11 +27,20 @@ public class Testing {
 
         Testing.myCode();
 
-        Scanner input = new Scanner(System.in);
+        //Scanner input = new Scanner(System.in);
 
-        String val = input.nextLine();
+        //String val = input.nextLine();
 
+        for(int i =0 ;i<5;i++) {
+            if (i%2 == 0)
+                if (Boolean.TRUE) {
+                    System.out.println("Nested If");
+                }
+            if (Boolean.TRUE) {
+                System.out.println("!Nested if");
+            }
 
+        }
 
     }
 }
