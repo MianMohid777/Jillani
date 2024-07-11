@@ -35,9 +35,13 @@ public class Matching {
     private JButton export;
 
 
+    private JComponent c;
+
+
     private StrategyController control;
     public Matching(StrategyController controller)
     {
+
         control = controller;
 
         frame = new JFrame("Resource Allocator");

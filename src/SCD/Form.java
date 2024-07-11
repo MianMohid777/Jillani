@@ -47,7 +47,7 @@ public class Form {
 
                 String[] option = {"1","2","3"};
 
-                JOptionPane.showOptionDialog(null,"Fuck","Title",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.ERROR_MESSAGE,null,option,option[0]);
+                JOptionPane.showOptionDialog(null,"oops","Title",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.ERROR_MESSAGE,null,option,option[0]);
             }
             @Override
             public void windowClosing(WindowEvent e)
@@ -133,6 +133,7 @@ public class Form {
         frame.add(area,BorderLayout.CENTER);
         frame.add(right,BorderLayout.EAST);
         frame.add(bottom,BorderLayout.SOUTH);
+
 
 
 
