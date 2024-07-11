@@ -35,6 +35,7 @@ public class BST<T extends Comparable<T>> {
        }
        else if(data.compareTo(rootNode.data) < 0)
        {
+
            rootNode.left =  add(rootNode.left,data);
        }
        else {

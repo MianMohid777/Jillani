@@ -1,3 +1,0 @@
-Web Development | javascript:e, java:i
-Data Analytics | python:e, javascript:i
-System Programming | c:i, c++:i, assembly:i
